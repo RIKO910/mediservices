@@ -4,7 +4,7 @@ import Icu from "@/app/(publicpages)/component/Icu/Icu";
 export default function Home() {
   return (
     <div>
-<Hero></Hero>
+        <Hero></Hero>
         <Icu></Icu>
     </div>
   );
