@@ -1,5 +1,9 @@
 import React from 'react';
 import { FaAmbulance } from "react-icons/fa";
+import { MdMedicalServices } from "react-icons/md";
+import { FaHospital } from "react-icons/fa";
+import { IoIosMan } from "react-icons/io";
+
 
 const Page = () => {
     return (
@@ -28,7 +32,7 @@ const Page = () => {
                         </div>
                         <div className="h-32 w-32 bg-white p-5">
                             <div className="font-bold text-3xl px-7 p-3">
-                                <FaAmbulance/>
+                                <IoIosMan />
                             </div>
                             <div className="font-bold">
                                 Customer
@@ -36,7 +40,7 @@ const Page = () => {
                         </div>
                         <div className="h-32 w-32 bg-white p-5">
                             <div className="font-bold text-3xl px-7 p-3">
-                                <FaAmbulance/>
+                                <MdMedicalServices />
                             </div>
                             <div className="font-bold">
                                 Service
@@ -44,7 +48,7 @@ const Page = () => {
                         </div>
                         <div className="h-32 w-32 bg-white p-5">
                             <div className="font-bold text-3xl px-7 p-3">
-                                <FaAmbulance/>
+                                <FaHospital />
                             </div>
                             <div className="font-bold ">
                                 Hospital Manage
