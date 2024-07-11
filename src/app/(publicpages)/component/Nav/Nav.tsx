@@ -1,4 +1,5 @@
-import React from 'react';
+// "use client"
+import React, {useState} from 'react';
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
@@ -15,12 +16,12 @@ const MainNav = () => {
         { name: 'Reports', href: '#' },
     ]
     return (
-        <Disclosure as="nav" className="bg-white">
+        <Disclosure as="nav" className="bg-white shadow">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                     <div className="flex items-center">
                         <div className="flex-shrink-0">
-                            <p className="text-black  text-lg">MediServices</p>
+                            <Link href="/" className="text-black  text-lg">MediServices</Link>
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">
@@ -52,7 +53,8 @@ const MainNav = () => {
 
                                 <Popover className="relative">
                                     <PopoverButton className="hover:border-none">
-                                        <div className="rounded-full px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-200 hover:text-white flex justify-between">
+                                        <div
+                                            className="rounded-full px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-200 hover:text-white flex justify-between">
                                             <span className="text-black ">About</span>
                                             <ChevronDownIcon aria-hidden="true" className="h-5 w-5 text-black"/>
                                         </div>
@@ -63,7 +65,8 @@ const MainNav = () => {
                                         transition
                                         className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-min -translate-x-1/2 px-4 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
                                     >
-                                        <div className="w-56 shrink rounded-xl bg-white p-4 text-sm font-semibold leading-6 text-gray-900 shadow-lg ring-1 ring-gray-900/5">
+                                        <div
+                                            className="w-56 shrink rounded-xl bg-white p-4 text-sm font-semibold leading-6 text-gray-900 shadow-lg ring-1 ring-gray-900/5">
                                             {solutions.map((item) => (
                                                 <a key={item.name} href={item.href} className="block p-2 hover:text-indigo-600">
                                                     {item.name}
@@ -78,19 +81,19 @@ const MainNav = () => {
                     <div className="hidden sm:ml-6 sm:block">
                         <div className="flex items-center space-x-4">
                             <Link
-                                href="#"
+                                href="/help"
                                 className="rounded-full px-3 py-2 text-sm font-medium text-black hover:bg-gray-200 "
                             >
                                 Help
                             </Link>
                             <Link
-                                href="#"
+                                href="/login"
                                 className="rounded-full px-3 py-2 text-sm font-medium text-black hover:bg-gray-200 "
                             >
                                 Log in
                             </Link>
                             <Link
-                                href="#"
+                                href="/signup"
                                 className="rounded-full px-3 py-2 text-sm font-medium text-black bg-gray-100 hover:bg-gray-200"
                             >
                                 Sign up

@@ -12,10 +12,10 @@ const MyComponent = () => {
                         <div className="max-w-2xl">
                             <div className="max-w-lg">
                                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                                    Find your ambulance
+                                    Find Your Ambulance
                                 </h1>
                                 <p className="mt-6 text-lg leading-8 text-gray-600">
-                                    Request a ride, hop in, and go.
+                                    Request an ambulance, hop in, and go.
                                 </p>
                                 <div className="mt-10 flex flex-col items-center gap-x-6 lg:items-start">
                                     <div className="relative mb-4 w-full lg:w-2/3">
