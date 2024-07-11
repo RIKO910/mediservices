@@ -8,12 +8,11 @@ import Link from "next/link";
 
 const MainNav = () => {
     const solutions = [
-        { name: 'Analytics', href: '#' },
-        { name: 'Engagement', href: '#' },
-        { name: 'Security', href: '#' },
-        { name: 'Integrations', href: '#' },
-        { name: 'Automations', href: '#' },
-        { name: 'Reports', href: '#' },
+        { name: 'About us', href: '/aboutus' },
+        { name: 'Our offerings', href: '#' },
+        { name: 'How MediServices works', href: '#' },
+        { name: 'Blog', href: '#' },
+        { name: 'Careers', href: '#' },
     ]
     return (
         <Disclosure as="nav" className="bg-white shadow">
