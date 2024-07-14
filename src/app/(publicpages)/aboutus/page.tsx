@@ -1,6 +1,10 @@
 import React from 'react';
 import Link from "next/link";
 import AboutDescription from "@/app/(publicpages)/aboutus/Description/Description";
+import PersonalData from "@/app/(publicpages)/aboutus/Personal/Personal";
+import Faq from "@/app/(publicpages)/aboutus/Faq/Faq";
+import Team from "@/app/(publicpages)/aboutus/Team/Team";
+import Blog from "@/app/(publicpages)/aboutus/Blog/Blog";
 
 const AboutUsPage = () => {
     return (
@@ -13,8 +17,11 @@ const AboutUsPage = () => {
                     <Link href="#" className=" px-4 lg:px-20 text-white "> HOME / <span className="text-blue-700">ABOUT</span></Link>
                 </div>
             </div>
-
             <AboutDescription/>
+            <Faq></Faq>
+            <PersonalData/>
+            <Team/>
+            <Blog/>
         </div>
     );
 };
