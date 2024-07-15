@@ -26,25 +26,25 @@ const MainNav = () => {
                             <div className="flex space-x-4">
                                 {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
                                 <Link
-                                    href="#"
+                                    href="/ambulance"
                                     className="rounded-full px-3 py-2 text-sm font-medium text-black hover:bg-gray-200 "
                                 >
                                     Ambulance
                                 </Link>
                                 <Link
-                                    href="#"
+                                    href="/icu"
                                     className="rounded-full px-3 py-2 text-sm font-medium text-black hover:bg-gray-200 "
                                 >
                                     ICU
                                 </Link>
                                 <Link
-                                    href="#"
+                                    href="/login-drive"
                                     className="rounded-full px-3 py-2 text-sm font-medium text-black hover:bg-gray-200 "
                                 >
-                                    Ride
+                                    Drive
                                 </Link>
                                 <Link
-                                    href="#"
+                                    href="/login-your-hospital"
                                     className="rounded-full px-3 py-2 text-sm font-medium text-black hover:bg-gray-200 "
                                 >
                                     Hospital
@@ -144,13 +144,13 @@ const MainNav = () => {
                     </div>
                     <div className="-mr-2 flex space-x-1 sm:hidden ">
                         <Link
-                            href="#"
-                            className="rounded-full px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                            href="/login"
+                            className="rounded-full px-3 py-2 text-sm font-medium text-black bg-white hover:bg-gray-200"
                         >
                             Log in
                         </Link>
                         <Link
-                            href="#"
+                            href="/signup"
                             className="rounded-full px-3 py-2 text-sm font-medium text-black bg-white hover:bg-gray-200"
                         >
                             Sign up
@@ -171,28 +171,28 @@ const MainNav = () => {
                     {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
                     <DisclosureButton
                         as="a"
-                        href="#"
+                        href="/ambulance"
                         className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                     >
                         Ambulance
                     </DisclosureButton>
                     <DisclosureButton
                         as="a"
-                        href="#"
+                        href="/icu"
                         className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                     >
                         ICU
                     </DisclosureButton>
                     <DisclosureButton
                         as="a"
-                        href="#"
+                        href="/login-drive"
                         className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                     >
-                        Ride
+                        Drive
                     </DisclosureButton>
                     <DisclosureButton
                         as="a"
-                        href="#"
+                        href="/login-your-hospital"
                         className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
                     >
                         Hospital
