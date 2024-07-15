@@ -1,6 +1,5 @@
 import React from 'react';
-import Nav from "@/app/(publicpages)/component/Nav/Nav";
-import Footer from "@/app/(publicpages)/component/Footer/Footer";
+import AuthPagesNav from "@/app/(authPages)/Nav/Nav";
 
 const Layout = ({
                     children,
@@ -9,9 +8,8 @@ const Layout = ({
 }>) => {
     return (
         <div>
-            <Nav/>
+            <AuthPagesNav/>
             {children}
-            <Footer/>
         </div>
     );
 };

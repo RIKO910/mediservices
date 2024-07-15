@@ -18,7 +18,7 @@ const AboutUsPage = () => {
                 </div>
             </div>
             <AboutDescription/>
-            <Faq></Faq>
+            {/*<Faq/>*/}
             <PersonalData/>
             <Team/>
             <Blog/>
