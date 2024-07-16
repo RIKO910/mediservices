@@ -2,8 +2,12 @@ import React from 'react';
 import Link from "next/link";
 import {Disclosure, DisclosureButton, DisclosurePanel} from "@headlessui/react";
 import {Bars3Icon, XMarkIcon} from "@heroicons/react/24/outline";
+import {getServerSession} from "next-auth";
+import {authOptions} from "@/lib/auth";
+import UserAccountNav from "@/app/(user)/Nav/UserAccountNav";
 
-const UserNav = () => {
+const UserNav = async () => {
+    const session =await getServerSession(authOptions);
     return (
         <Disclosure as="nav" className="bg-white shadow">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -32,34 +36,48 @@ const UserNav = () => {
                     </div>
                     <div className="hidden sm:ml-6 sm:block">
                         <div className="flex items-center space-x-4">
-                            <Link
-                                href="/login-with-user"
-                                className="rounded-full px-3 py-2 text-sm font-medium text-black hover:bg-gray-200 "
-                            >
-                                Log in
-                            </Link>
-                            <Link
-                                href="/signup-with-user"
-                                className="rounded-full px-3 py-2 text-sm font-medium text-black bg-gray-100 hover:bg-gray-200"
-                            >
-                                Sign up
-                            </Link>
-
+                            {
+                                session?.user?(
+                                        <UserAccountNav/>
+                                    ):
+                                    <>
+                                        <Link
+                                            href="/login-with-user"
+                                            className="rounded-full px-3 py-2 text-sm font-medium text-black bg-white hover:bg-gray-200"
+                                        >
+                                            Log in
+                                        </Link>
+                                        <Link
+                                            href="/signup-with-user"
+                                            className="rounded-full px-3 py-2 text-sm font-medium text-black bg-white hover:bg-gray-200"
+                                        >
+                                            Sign up
+                                        </Link>
+                                    </>
+                            }
                         </div>
                     </div>
                     <div className="-mr-2 flex space-x-1 sm:hidden ">
-                        <Link
-                            href="/login-with-user"
-                            className="rounded-full px-3 py-2 text-sm font-medium text-black bg-white hover:bg-gray-200"
-                        >
-                            Log in
-                        </Link>
-                        <Link
-                            href="/signup-with-user"
-                            className="rounded-full px-3 py-2 text-sm font-medium text-black bg-white hover:bg-gray-200"
-                        >
-                            Sign up
-                        </Link>
+                        {
+                            session?.user?(
+                                <UserAccountNav/>
+                            ):
+                                <>
+                                    <Link
+                                        href="/login-with-user"
+                                        className="rounded-full px-3 py-2 text-sm font-medium text-black bg-white hover:bg-gray-200"
+                                    >
+                                        Log in
+                                    </Link>
+                                    <Link
+                                        href="/signup-with-user"
+                                        className="rounded-full px-3 py-2 text-sm font-medium text-black bg-white hover:bg-gray-200"
+                                    >
+                                        Sign up
+                                    </Link>
+                                </>
+                        }
+
                         {/* Mobile menu button */}
                         <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                             <span className="absolute -inset-0.5" />

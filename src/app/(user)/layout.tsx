@@ -1,6 +1,7 @@
 import React from 'react';
 import UserNav from "@/app/(user)/Nav/Nav";
 import Footer from "@/app/(publicpages)/component/Footer/Footer";
+import Provider from "@/provider/provider";
 
 const Layout = ({
                     children,
@@ -9,9 +10,9 @@ const Layout = ({
 }>) => {
     return (
         <div>
-            <UserNav/>
-            {children}
-            <Footer/>
+                <UserNav/>
+                {children}
+                <Footer/>
         </div>
     );
 };

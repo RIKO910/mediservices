@@ -5,8 +5,11 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import Link from "next/link";
+import {getServerSession} from "next-auth";
+import {authOptions} from "@/lib/auth";
+import UserAccountNav from "@/app/(user)/Nav/UserAccountNav";
 
-const MainNav = () => {
+const MainNav = async () => {
     const solutions = [
         { name: 'About us', href: '/aboutus' },
         { name: 'Our offerings', href: '#' },
@@ -14,7 +17,9 @@ const MainNav = () => {
         { name: 'Blog', href: '#' },
         { name: 'Careers', href: '#' },
     ]
+    const session =await getServerSession(authOptions);
     return (
+
         <Disclosure as="nav" className="bg-white shadow">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
@@ -85,18 +90,25 @@ const MainNav = () => {
                             >
                                 Help
                             </Link>
-                            <Link
-                                href="/login"
-                                className="rounded-full px-3 py-2 text-sm font-medium text-black hover:bg-gray-200 "
-                            >
-                                Log in
-                            </Link>
-                            <Link
-                                href="/signup"
-                                className="rounded-full px-3 py-2 text-sm font-medium text-black bg-gray-100 hover:bg-gray-200"
-                            >
-                                Sign up
-                            </Link>
+                            {
+                                session?.user?(
+                                        <UserAccountNav/>
+                                    ):
+                                    <>
+                                        <Link
+                                            href="/login"
+                                            className="rounded-full px-3 py-2 text-sm font-medium text-black bg-white hover:bg-gray-200"
+                                        >
+                                            Log in
+                                        </Link>
+                                        <Link
+                                            href="/signup"
+                                            className="rounded-full px-3 py-2 text-sm font-medium text-black bg-white hover:bg-gray-200"
+                                        >
+                                            Sign up
+                                        </Link>
+                                    </>
+                            }
                             {/*<button*/}
                             {/*    type="button"*/}
                             {/*    className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"*/}
@@ -106,7 +118,7 @@ const MainNav = () => {
                             {/*    <BellIcon aria-hidden="true" className="h-6 w-6" />*/}
                             {/*</button>*/}
 
-                            {/* Profile dropdown */}
+                             {/*Profile dropdown*/}
                             {/*<Menu as="div" className="relative ml-3">*/}
                             {/*    <div>*/}
                             {/*        <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">*/}
@@ -143,18 +155,25 @@ const MainNav = () => {
                         </div>
                     </div>
                     <div className="-mr-2 flex space-x-1 sm:hidden ">
-                        <Link
-                            href="/login"
-                            className="rounded-full px-3 py-2 text-sm font-medium text-black bg-white hover:bg-gray-200"
-                        >
-                            Log in
-                        </Link>
-                        <Link
-                            href="/signup"
-                            className="rounded-full px-3 py-2 text-sm font-medium text-black bg-white hover:bg-gray-200"
-                        >
-                            Sign up
-                        </Link>
+                        {
+                            session?.user?(
+                                    <UserAccountNav/>
+                                ):
+                                <>
+                                    <Link
+                                        href="/login"
+                                        className="rounded-full px-3 py-2 text-sm font-medium text-black bg-white hover:bg-gray-200"
+                                    >
+                                        Log in
+                                    </Link>
+                                    <Link
+                                        href="/signup"
+                                        className="rounded-full px-3 py-2 text-sm font-medium text-black bg-white hover:bg-gray-200"
+                                    >
+                                        Sign up
+                                    </Link>
+                                </>
+                        }
                         {/* Mobile menu button */}
                         <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                             <span className="absolute -inset-0.5" />
