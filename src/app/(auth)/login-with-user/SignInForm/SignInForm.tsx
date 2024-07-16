@@ -24,6 +24,7 @@ const SignInForm = () => {
         defaultValues: {
             email: '',
             password: '',
+            role: 'USER',
         },
     });
 
@@ -32,6 +33,7 @@ const SignInForm = () => {
             redirect: false,
             email: values.email,
             password: values.password,
+            role: values.role,
         });
 
         if (result?.error) {

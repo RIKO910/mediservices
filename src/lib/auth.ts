@@ -32,8 +32,14 @@ export const authOptions:NextAuthOptions = {
                 if(!existingUser){
                     return null;
                 }
+
                 const passwordMatch =await compare(credentials.password, existingUser.password)
                 if(!passwordMatch){
+                    return null;
+                }
+
+                const rollMatch =await compare(credentials.role, existingUser.role)
+                if(!rollMatch){
                     return null;
                 }
 
