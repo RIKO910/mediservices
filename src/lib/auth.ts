@@ -1,18 +1,18 @@
-import NextAuth, {NextAuthOptions} from "next-auth"
+import NextAuth, { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
-import {PrismaAdapter} from "@next-auth/prisma-adapter";
-import {db} from "@/lib/db";
-import {compare} from "bcrypt";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { db } from "@/lib/db";
+import { compare } from "bcrypt";
 
-export const authOptions:NextAuthOptions = {
-    adapter:PrismaAdapter(db),
+export const authOptions: NextAuthOptions = {
+    adapter: PrismaAdapter(db),
     secret: process.env.NEXTAUTH_SECRET,
-    session:{
-        strategy:'jwt'
+    session: {
+        strategy: 'jwt'
     },
-    pages:{
-        signIn:'/login-with-user'
-    },
+    // pages: {
+    //     signIn: '/login-with-user'
+    // },
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -23,56 +23,54 @@ export const authOptions:NextAuthOptions = {
             },
             async authorize(credentials) {
                 if (!credentials?.email || !credentials.password) {
-                    return null;
+                    throw new Error('Email and password are required');
                 }
 
-                const existingUser =await db.user.findUnique({
-                    where:{email:credentials?.email}
-                })
-                if(!existingUser){
-                    return null;
+                const existingUser = await db.user.findUnique({
+                    where: { email: credentials?.email }
+                });
+                if (!existingUser) {
+                    throw new Error('User not found');
                 }
 
-                const passwordMatch =await compare(credentials.password, existingUser.password)
-                if(!passwordMatch){
-                    return null;
+                const passwordMatch = await compare(credentials.password, existingUser.password);
+                if (!passwordMatch) {
+                    throw new Error('Incorrect password');
                 }
 
                 if (credentials.role !== existingUser.role) {
-                    return null;
+                    throw new Error('Your are not a valid user');
                 }
 
                 return {
-                    id:`$existingUser.id`,
-                    username:existingUser.username,
-                    email:existingUser.email,
-                    role:existingUser.role
-                }
+                    id: `${existingUser.id}`,
+                    username: existingUser.username,
+                    email: existingUser.email,
+                    role: existingUser.role
+                };
             }
         })
     ],
-    callbacks:{
-        async jwt({ token, user}) {
-            if (user){
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
                 return {
                     ...token,
-                    username:user.username,
-                    role:user.role
+                    username: user.username,
+                    role: user.role
                 }
             }
-            return token
+            return token;
         },
         async session({ session, user, token }) {
-            console.log(token, user)
             return {
                 ...session,
-                user:{
+                user: {
                     ...session.user,
-                    username:token.username,
-                    role:token.role
+                    username: token.username,
+                    role: token.role
                 }
             }
         },
-
     }
 }
