@@ -37,7 +37,8 @@ const SignInForm = () => {
         });
 
         if (result?.error) {
-            alert("Email and password do not match");
+            // alert("Email and password do not match");
+            console.log(result?.error);
         } else {
             router.refresh();
             router.push('/ambulance');

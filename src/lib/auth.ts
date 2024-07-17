@@ -38,8 +38,7 @@ export const authOptions:NextAuthOptions = {
                     return null;
                 }
 
-                const rollMatch =await compare(credentials.role, existingUser.role)
-                if(!rollMatch){
+                if (credentials.role !== existingUser.role) {
                     return null;
                 }
 
